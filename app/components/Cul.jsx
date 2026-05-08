@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function Cul() {
-  const [selectedGame, setSelectedGame] = useState("");
   const [playerName, setPlayerName] = useState("");
   const [email, setEmail] = useState("");
   const [hoveredGame, setHoveredGame] = useState("");
@@ -44,11 +43,11 @@ export default function Cul() {
     },
     {
       id: "csgo",
-      name: "CS:GO",
+      name: "CS:2",
       description: "FPS тоглоом, тактик",
       icon: "",
       color: "from-red-500 to-orange-500",
-      image: "/1426.webp",
+      image: "/cs2.webp",
     },
     {
       id: "lol",
@@ -76,10 +75,10 @@ export default function Cul() {
             Тэмцээнд оролцох
           </h1>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Та ажил хийж мөнгө олох арай бага байна уу? Тэгвэл би танийг энд
-            урьж байна. Энд та зүгээр өрсөлдөж болох ямар тоглоом байна, тэр
-            бүгдээр чинь би сар бүр бүүр болий гэвэл долоо хоног бүр тэмцээн
-            цохиох болно. Та бэлэн үү?
+            Ажил хийж мөнгө олох удаан санагдаж байна уу? Энд чи зүгээр тоглож,
+            азаа сорьж, бодит шагнал хүртэх боломжтой. Өдөр бүр шинэ боломж
+            нээгдэж, долоо хоног бүр илүү том ялалт чамайг хүлээж байна. Яг одоо
+            эхэлж, өөрийгөө сорь. Чи бэлэн үү?
           </p>
         </div>
 
@@ -90,54 +89,41 @@ export default function Cul() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {games.map((game) => (
-              <div
-                key={game.id}
-                onClick={() => setSelectedGame(game.id)}
-                onMouseEnter={() => setHoveredGame(game.id)}
-                onMouseLeave={() => setHoveredGame("")}
-                className={`relative group cursor-pointer transform transition-all duration-500 hover:scale-110 ${
-                  selectedGame === game.id ? "scale-105" : ""
-                }`}
-              >
+              <Link key={game.id} href={`/tournament/${game.id}`}>
                 <div
-                  className={`absolute inset-0 bg-linear-to-r ${game.color} rounded-2xl blur-xl opacity-75 group-hover:opacity-100 transition-opacity duration-300`}
-                ></div>
-                <div
-                  className={`relative bg-white/90 backdrop-blur-md rounded-2xl p-8 border-2 ${
-                    selectedGame === game.id
-                      ? "border-white shadow-2xl ring-4 ring-white/50"
-                      : "border-transparent shadow-xl"
-                  }`}
+                  onMouseEnter={() => setHoveredGame(game.id)}
+                  onMouseLeave={() => setHoveredGame("")}
+                  className="relative group cursor-pointer transform transition-all duration-500 hover:scale-110"
                 >
                   <div
-                    className={`text-6xl mb-6 text-center transform transition-all duration-300 max-h-40 ${
-                      hoveredGame === game.id ? "scale-125 rotate-12" : ""
-                    }`}
-                  >
-                    {game.icon}
-                    <img
-                      src={game.image}
-                      alt=""
-                      className="w-32 h-32 flex justify-center"
-                    />
+                    className={`absolute inset-0 bg-linear-to-r ${game.color} rounded-2xl blur-xl opacity-75 group-hover:opacity-100 transition-opacity duration-300`}
+                  ></div>
+                  <div className="relative bg-white/90 backdrop-blur-md rounded-2xl p-8 border-2 border-transparent shadow-xl">
+                    <div
+                      className={`text-6xl mb-6 text-center transform transition-all duration-300 max-h-40 ${
+                        hoveredGame === game.id ? "scale-125 rotate-12" : ""
+                      }`}
+                    >
+                      {game.icon}
+                      <img
+                        src={game.image}
+                        alt=""
+                        className="w-32 h-32 flex justify-center"
+                      />
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-800 text-center mb-3">
+                      {game.name}
+                    </h3>
+                    <p className="text-gray-600 text-center text-sm leading-relaxed">
+                      {game.description}
+                    </p>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-800 text-center mb-3">
-                    {game.name}
-                  </h3>
-                  <p className="text-gray-600 text-center text-sm leading-relaxed">
-                    {game.description}
-                  </p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
         <div className="mt-10 text-center flex justify-center gap-2">
-          <Link href="/about">
-            <button className="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors">
-              Бүртгүүлэх
-            </button>
-          </Link>
           <Link href="/contact">
             <button className="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors">
               Холбоо барих
