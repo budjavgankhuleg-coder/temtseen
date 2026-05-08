@@ -19,7 +19,7 @@ export default function Cul() {
     },
     {
       id: "mlbb",
-      name: "Mobile Gankhuleg",
+      name: "Mobile Legends",
       description: "MOBA тоглоом, багийн тактик",
       icon: "",
       color: "from-blue-500 to-purple-500",
