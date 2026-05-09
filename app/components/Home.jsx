@@ -29,11 +29,11 @@ export default function Home() {
 
   if (isRegistered) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-slate-600 to-black p-8 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-slate-600 to-black p-4 md:p-8 flex items-center justify-center">
         <div className="text-center">
-          <div className="w-24 h-24 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
+          <div className="w-16 h-16 md:w-24 md:h-24 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
             <svg
-              className="w-12 h-12 text-white"
+              className="w-8 h-8 md:w-12 md:h-12 text-white"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -46,20 +46,22 @@ export default function Home() {
               />
             </svg>
           </div>
-          <h2 className="text-3xl font-bold text-white mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
             Бүртгэл амжилттай!
           </h2>
-          <p className="text-gray-300 mb-6">Таны мэдээлийг хадгалж байна...</p>
-          <div className="w-16 h-1 bg-gradient-to-r from-purple-600 to-pink-600 mx-auto animate-pulse"></div>
+          <p className="text-gray-300 mb-6 text-sm md:text-base">
+            Таны мэдээлийг хадгалж байна...
+          </p>
+          <div className="w-12 h-1 md:w-16 bg-gradient-to-r from-purple-600 to-pink-600 mx-auto animate-pulse"></div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-slate-600 to-black p-8 flex items-center justify-center">
-      <div className="w-md mx-auto">
-        <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-slate-600 to-black p-4 md:p-8 flex items-center justify-center">
+      <div className="w-full max-w-md mx-auto">
+        <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-4 md:p-8 border border-white/20">
           <h2 className="text-2xl font-bold text-white text-center mb-6">
             Бүртгүүлэх
           </h2>

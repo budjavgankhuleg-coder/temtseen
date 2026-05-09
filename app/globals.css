@@ -1,3 +1,55 @@
 @import "tailwindcss";
 
+/* Responsive design improvements */
+@media (max-width: 768px) {
+  header {
+    padding: 10px;
+  }
 
+  /* Mobile viewport fixes */
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Mobile form improvements */
+  input,
+  button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+  }
+
+  /* Mobile text sizing */
+  body {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* Mobile spacing fixes */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  /* Ensure buttons are touch-friendly */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Landscape mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .min-h-screen {
+    min-height: 100vh;
+  }
+}
