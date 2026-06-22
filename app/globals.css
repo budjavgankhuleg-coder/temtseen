@@ -1,18 +1,35 @@
 @import "tailwindcss";
 
-/* Responsive design improvements */
+@media (max-width: 640px) {
+  .responsive-text {
+    font-size: 0.875rem;
+  }
+  .responsive-title {
+    font-size: 1.25rem;
+  }
+  .responsive-padding {
+    padding: 1rem;
+  }
+}
+
 @media (max-width: 768px) {
   header {
-    padding: 10px;
+    padding: 0.5rem;
+  }
+  .mobile-stack {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .mobile-center {
+    text-align: center;
+    justify-content: center;
   }
 
-  /* Mobile viewport fixes */
   html,
   body {
     overflow-x: hidden;
   }
 
-  /* Mobile form improvements */
   input,
   button {
     -webkit-appearance: none;
@@ -21,7 +38,6 @@
     border-radius: 0;
   }
 
-  /* Mobile text sizing */
   body {
     font-size: 16px;
     line-height: 1.5;

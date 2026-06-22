@@ -40,11 +40,15 @@ const useRegisteredUsers = () => {
 };
 
 const GameCard = ({ game, date, registeredCount }) => (
-  <div className="bg-white/20 backdrop-blur rounded-3xl p-8 mb-8 border border-white/20 transition-all hover:bg-white/30">
-    <h2 className="text-2xl font-bold mb-4">{date}</h2>
-    <p className="text-lg mb-4">{game}</p>
+  <div className="bg-white/20 backdrop-blur rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 md:mb-8 border border-white/20 transition-all hover:bg-white/30">
+    <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 responsive-title">
+      {date}
+    </h2>
+    <p className="text-sm sm:text-base md:text-lg mb-2 sm:mb-3 md:mb-4 responsive-text">
+      {game}
+    </p>
     {registeredCount > 0 && (
-      <p className="text-green-400 text-sm font-medium mb-4">
+      <p className="text-green-400 text-xs sm:text-sm font-medium mb-2 sm:mb-3 md:mb-4">
         ✓ {registeredCount} хүн бүртгүүлсэн
       </p>
     )}
@@ -96,41 +100,41 @@ export default function Orsoldoon() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white py-8">
-      <div className="max-w-4xl mx-auto bg-white/10 backdrop-blur-lg text-black p-8 rounded-lg">
+    <div className="min-h-screen bg-gray-900 text-white py-4 sm:py-6 md:py-8">
+      <div className="max-w-4xl mx-auto bg-white/10 backdrop-blur-lg text-black p-4 sm:p-6 md:p-8 rounded-lg responsive-padding">
         {registeredUsers.length > 0 && (
-          <div className="bg-white/20 backdrop-blur rounded-3xl p-8 mb-8 border border-white/20">
-            <h2 className="text-2xl font-bold mb-6 text-white">
+          <div className="bg-white/20 backdrop-blur rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 md:mb-8 border border-white/20">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-5 md:mb-6 text-white responsive-title">
               Бүртгүүлсэн тоглогчид ({registeredUsers.length})
             </h2>
-            <div className="space-y-3 max-h-60 overflow-y-auto">
+            <div className="space-y-2 sm:space-y-3 max-h-60 overflow-y-auto">
               {registeredUsers.map((user, index) => (
                 <div
                   key={user.userId || index}
-                  className="bg-white/10 backdrop-blur rounded-2xl p-4 border border-white/20 transition-all hover:bg-white/20"
+                  className="bg-white/10 backdrop-blur rounded-xl sm:rounded-2xl p-3 sm:p-4 border border-white/20 transition-all hover:bg-white/20"
                 >
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-white font-bold">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                    <div className="flex-1">
+                      <p className="text-white font-bold text-sm sm:text-base">
                         {user.name || "Нэргүй"}
                       </p>
-                      <p className="text-gray-300 text-sm">
+                      <p className="text-gray-300 text-xs sm:text-sm">
                         {user.email || "И-мэйл байхгүй"}
                       </p>
                       <p className="text-gray-400 text-xs">
                         {user.phone || "Утас байхгүй"}
                       </p>
-                      <p className="text-blue-400 text-xs font-medium mt-1">
+                      <p className="text-blue-400 text-xs sm:text-xs font-medium mt-1">
                         🎮 {user.game || "Тоглоом тодорхойгүй"}
                       </p>
                     </div>
-                    <div className="text-right flex items-center gap-3">
-                      <p className="text-green-400 text-sm font-bold">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 sm:text-right">
+                      <p className="text-green-400 text-xs sm:text-sm font-bold">
                         ✓ Бүртгүүлсэн
                       </p>
                       <button
                         onClick={() => deleteUser(user.userId ? user : index)}
-                        className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition-colors"
+                        className="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded text-xs sm:text-sm transition-colors min-h-[44px]"
                       >
                         Хасах
                       </button>
@@ -142,7 +146,7 @@ export default function Orsoldoon() {
           </div>
         )}
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {games.map((game, index) => (
             <GameCard
               key={index}
@@ -153,17 +157,19 @@ export default function Orsoldoon() {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <Link href="/link">
-            <button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-medium transition-colors transform hover:scale-105">
-              Бүртгүүлэх
-            </button>
-          </Link>
-          <Link href="/about">
-            <button className="bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded-lg text-lg font-medium transition-colors transform hover:scale-105 ml-12">
-              Буцах
-            </button>
-          </Link>
+        <div className="mt-8 sm:mt-10 md:mt-12 text-center mobile-center">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
+            <Link href="/link">
+              <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-medium transition-colors transform hover:scale-105 w-full sm:w-auto min-h-[44px]">
+                Бүртгүүлэх
+              </button>
+            </Link>
+            <Link href="/about">
+              <button className="bg-red-500 hover:bg-red-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-medium transition-colors transform hover:scale-105 w-full sm:w-auto min-h-[44px]">
+                Буцах
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
